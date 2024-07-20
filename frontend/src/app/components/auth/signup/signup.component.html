@@ -1,0 +1,43 @@
+<div class="min-h-screen w-full flex flex-col justify-center items-center">
+  <div>
+    <div class="border-2 p-12 rounded-lg">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col items-center gap-3">
+          <input
+            type="name"
+            placeholder=" Enter Your Name"
+            class="border-2 rounded-md p-2"
+            formControlName="name"
+          />
+
+          <input
+            type="email"
+            placeholder=" Enter Your Email"
+            class="border-2 rounded-md p-2"
+            formControlName="email"
+          />
+          <input
+            type="password"
+            placeholder=" Enter Your Password"
+            class="border-2 rounded-md p-2"
+            formControlName="password"
+          />
+        </div>
+        <div class="flex m-2 mt-6 justify-center text-center">
+          <button
+            class="border-2 p-2 rounded-xl ml-2"
+            [disabled]="signupForm.invalid"
+          >
+            Signup
+          </button>
+        </div>
+        <div
+          *ngIf="signupForm.invalid && signupForm.touched"
+          class="text-center text-red-500 font-thin"
+        >
+          Enter Valid Details
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
