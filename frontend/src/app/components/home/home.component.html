@@ -4,33 +4,19 @@
 
 <div class="flex w-full justify-center">
   <div>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="grid grid-cols-2 gap-6">
-        <input type="text" placeholder="Enter Your Name" class="border-2 p-2 rounded-md" />
-        <input type="text" placeholder="Enter Your 10 %" class="border-2 p-2 rounded-md" />
-        <input type="text" placeholder="Enter Your 12 %" class="border-2 p-2 rounded-md" />
-        <input
-          type="text"
-          placeholder="Enter Your Email"
-          class="border-2 p-2 rounded-md"
-        />
+        <input type="text" placeholder="Enter Your Name" class="border-2 p-2 rounded-md" formControlName="name" />
+        <input type="text" placeholder="Enter Your 10 %" class="border-2 p-2 rounded-md" formControlName="tenPercent" />
+        <input type="text" placeholder="Enter Your 12 %" class="border-2 p-2 rounded-md" formControlName="twelvePercent" />
+        <input type="email" placeholder="Enter Your Email" class="border-2 p-2 rounded-md" formControlName="email" />
       </div>
       <div class="gap-6 mt-6 grid grid-cols-1">
-        <input
-          type="text"
-          placeholder="What's your skills ? e.g. CSS, HTML"
-          class="border-2 p-2 py-3 rounded-md"
-        />
-        <textarea
-          placeholder="Enter your Achievements !! "
-          class="border-2 p-2 resize-none py-5 rounded-md"
-        ></textarea>
+        <input type="text" placeholder="What's your skills ? e.g. CSS, HTML" class="border-2 p-2 py-3 rounded-md" formControlName="skills" />
+        <textarea placeholder="Enter your Achievements !! " class="border-2 p-2 resize-none py-5 rounded-md" formControlName="achievements"></textarea>
       </div>
       <div class="flex justify-center mt-8">
-        <button
-          type="submit"
-          class="text-center font-mono border-2 p-2 rounded-xl bg-green-500 text-white hover:bg-green-700"
-        >
+        <button type="submit" class="text-center font-mono border-2 p-2 rounded-xl bg-green-500 text-white hover:bg-green-700">
           Submit
         </button>
       </div>
