@@ -19,7 +19,7 @@ export class formService {
   private static async generatePdf(form: formData) {
     try {
       let templateData = fs.readFileSync(
-        path.join(__dirname, "utils/resumeTemplates/format1.tex"),
+        path.join(__dirname, "../utils/resumeTemplates/format1.tex"),
         "utf-8"
       );
 

@@ -10,8 +10,8 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use(authenticate);
-app.use('api/v1' , baseRoutes);
+// app.use(authenticate);
+app.use('/api/v1' , baseRoutes);
 app.listen(PORT, () => {
   console.log(`Started the Server on ${PORT}`);
 });
