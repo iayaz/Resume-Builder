@@ -31,7 +31,7 @@ export class HomeComponent {
   onSubmit() {
     if (this.form.valid) {
       console.log('Form Data:', this.form.value);
-      // Handle form submission, e.g., send data to a server
+      
     } else {
       console.log('Form is invalid');
     }

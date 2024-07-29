@@ -2,16 +2,24 @@ import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
 import { authenticate } from "./middleware/auth";
-import baseRoutes from './routes/baseRouter'
+import baseRoutes from "./routes/baseRouter";
+import cors from "cors";
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-// app.use(authenticate);
-app.use('/api/v1' , baseRoutes);
+app.use(authenticate);
+app.use("/api/v1", baseRoutes);
 app.listen(PORT, () => {
   console.log(`Started the Server on ${PORT}`);
 });

@@ -21,7 +21,7 @@ export class Auth {
 
       const SECRET: string = process.env.JWT_SECRET || "mystring";
       const token = jwt.sign(userWithoutPassword, SECRET, { expiresIn: "1m" });
-      res.status(200).json(token);
+      res.status(200).json({token : token});
     } catch (error) {
       res.status(500).json({ msg: "Server error", error });
     }

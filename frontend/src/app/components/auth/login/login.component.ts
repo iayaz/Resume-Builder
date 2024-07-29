@@ -1,3 +1,4 @@
+import { AuthserviceService } from './../../../services/auth/authservice.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -19,7 +20,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthserviceService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -27,7 +32,12 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
+    const { email, password } = this.loginForm.value;
+    this.auth.login(email, password).subscribe({
+      next: (v) => this.router.navigateByUrl('home'),
+      error: ({error}) => window.alert(error.msg),
+  });
   }
 
   navigateToSignup() {
