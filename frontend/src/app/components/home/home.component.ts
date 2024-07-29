@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { FormService } from '../../services/formCall/form.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ import {
 export class HomeComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private formService: FormService) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       tenPercent: ['', Validators.required],
@@ -31,7 +32,7 @@ export class HomeComponent {
   onSubmit() {
     if (this.form.valid) {
       console.log('Form Data:', this.form.value);
-      
+      this.formService.compilepdf(this.form.value);
     } else {
       console.log('Form is invalid');
     }
