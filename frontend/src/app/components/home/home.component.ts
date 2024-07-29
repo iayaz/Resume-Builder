@@ -30,11 +30,15 @@ export class HomeComponent {
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log('Form Data:', this.form.value);
-      this.formService.compilepdf(this.form.value);
-    } else {
-      console.log('Form is invalid');
-    }
+    console.log('Form Data:', this.form.value);
+    this.formService.compilepdf(this.form.value).subscribe((data: Blob) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'document.pdf';
+      link.click();
+      window.URL.revokeObjectURL(url);
+    });
   }
 }
