@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && npm run copy-files && nodemon dist/index.js",
-    "copy-files": "xcopy /E /I src\\utils\\resumeTemplates dist\\utils\\resumeTemplates",
+    "start": "tsc && npm run create-dist-dir && npm run copy-files && nodemon dist/index.js",
+    "create-dist-dir": "mkdir -p dist/utils",
+    "copy-files": "cp -r src/utils/resumeTemplates dist/utils/resumeTemplates",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
